@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 function Experience() {
   const [selectedCompany, setSelectedCompany] = useState('Nuvepro')
-  const [isAnimating, setIsAnimating] = useState(false)
-  const [showContent, setShowContent] = useState(true)
+  const [showContent, setShowContent] = useState(false)
+  const [animationKey, setAnimationKey] = useState(0)
 
   const companies = {
     Nuvepro: {
@@ -35,24 +35,22 @@ function Experience() {
 
   const handleCompanyChange = (company) => {
     if (company === selectedCompany) return;
-    
-    setIsAnimating(true);
+
+    // Fade out first
     setShowContent(false);
-    
-    // Add a small delay before changing the company to let the fade-out animation complete
+
     setTimeout(() => {
       setSelectedCompany(company);
-      // After changing company, start showing content with animation
+      setAnimationKey(prev => prev + 1); // force remount of list items
       setTimeout(() => {
         setShowContent(true);
-        setIsAnimating(false);
-      }, 100);
+      }, 50);
     }, 300);
   }
 
-  // Initial content animation on component mount
+  // Fade in on initial mount
   useEffect(() => {
-    setShowContent(true);
+    setTimeout(() => setShowContent(true), 100);
   }, []);
 
   return (
@@ -63,23 +61,17 @@ function Experience() {
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company list with custom scrollbar */}
+          {/* Company list */}
           <div className="md:col-span-1">
-            <div className="max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
-              <style jsx>{`
-                .scrollbar-thin::-webkit-scrollbar {
-                    width: 6px;
-                }
-                .scrollbar-thin::-webkit-scrollbar-track {
-                    background: #1f2937;
-                    border-radius: 3px;
-                }
-                .scrollbar-thin::-webkit-scrollbar-thumb {
-                    background: #4b5563;
-                    border-radius: 3px;
-                }
-                .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-                    background: #6b7280;
+            <div className="max-h-80 overflow-y-auto scrollbar-thin">
+              <style>{`
+                .scrollbar-thin::-webkit-scrollbar { width: 6px; }
+                .scrollbar-thin::-webkit-scrollbar-track { background: #1f2937; border-radius: 3px; }
+                .scrollbar-thin::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 3px; }
+                .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+                @keyframes fadeSlideIn {
+                  from { opacity: 0; transform: translateY(16px); }
+                  to   { opacity: 1; transform: translateY(0); }
                 }
               `}</style>
               <ul className="space-y-2 pr-2">
@@ -101,12 +93,13 @@ function Experience() {
             </div>
           </div>
 
-          {/* Experience details with animation */}
+          {/* Experience details */}
           <div className="md:col-span-3">
             <div className="pl-0 md:pl-8">
-              {/* Title and period with fade animation */}
+
+              {/* Title + period fade */}
               <div className={`transition-all duration-500 ${
-                showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
                 <h2 className="text-2xl font-semibold mb-2">
                   {companies[selectedCompany].title}{' '}
@@ -116,24 +109,25 @@ function Experience() {
                   {companies[selectedCompany].period}
                 </p>
               </div>
-              
-              {/* Description list with staggered animations */}
-              <ul className="space-y-4">
+
+              {/* key prop forces React to remount the list on every company change,
+                  so the CSS animation always replays from scratch */}
+              <ul key={animationKey} className="space-y-4">
                 {companies[selectedCompany].description.map((item, index) => (
                   <li
                     key={index}
-                    className={`flex items-start transition-all duration-700 ease-out ${
-                      showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-                    }`}
+                    className="flex items-start opacity-0 translate-y-6"
                     style={{
-                      transitionDelay: `${index * 200 + 300}ms`
+                      animation: showContent ? 'fadeSlideIn 0.5s ease forwards' : 'none',
+                      animationDelay: `${index * 120}ms`,
                     }}
                   >
-                    <span className="text-emerald-400 mr-3 mt-1">▸</span>
+                    <span className="text-emerald-400 mr-3 mt-1 shrink-0">▸</span>
                     <span className="text-gray-300">{item}</span>
                   </li>
                 ))}
               </ul>
+
             </div>
           </div>
         </div>
