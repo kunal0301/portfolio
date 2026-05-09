@@ -59,7 +59,7 @@ function Home() {
           <p className="text-lg text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed
             transition-all duration-1000 delay-300 transform 
             ${isTypingComplete ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}">
-            I'm a software developer from Bengaluru, India. I'm fascinated by large-scale, high-impact products 
+            I'm a software Engineer from Bengaluru, India. I'm fascinated by large-scale, high-impact products 
             and contributed to major feature launches in industry-leading services.
           </p>
           

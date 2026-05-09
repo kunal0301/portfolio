@@ -1,23 +1,36 @@
 import React, { useState, useEffect } from 'react'
 
 function Experience() {
-  const [selectedCompany, setSelectedCompany] = useState('DTskill')
+  const [selectedCompany, setSelectedCompany] = useState('Nuvepro')
   const [isAnimating, setIsAnimating] = useState(false)
   const [showContent, setShowContent] = useState(true)
 
   const companies = {
-    DTskill: {
-      title: 'Software Developer',
-      company: 'DTskill',
-      period: 'Feb 2024 - Present',
+    Nuvepro: {
+      title: 'Software Engineer',
+      company: 'Nuvepro Technologies',
+      period: 'Dec 2025 - Present',
       description: [
-        "Developed a fully-fledged microservice application using Django and FastAPI. Leveraging FastAPI as a gateway to connect all the Django services.",
-        "Using redis in the gateway to store the authentication token of a valid user. And all the details of users are stored in MySQL DataBase.",
-        "Developed a system to categorize users reviews on the basis of improvement areas mentioned using AzureAI model (GPT4omini)",
-        "Developed an application for a client that integrated Smartsheets with Python to automate document generation. The application processed each row in the Smartsheet, dynamically filling a DOCX template by replacing placeholders with corresponding values from the Smartsheet. This solution streamlined the document creation process, significantly reducing manual work by almost 99% and ensuring consistency across generated documents."
+        "Designed and developed guided assessments on LangChain, RAG, and AI Agents, helping learners understand real-world LLM application patterns.",
+        "Built hands-on coding challenges and evaluation logic for AI workflows, including prompt chaining, vector search, and agent orchestration.",
+        "Collaborated with content and engineering teams to ensure assessments aligned with industry-grade backend and AI system design practices.",
       ]
-    }
-    
+    },
+    DTSkill: {
+      title: 'Python Developer',
+      company: 'DTSkill',
+      period: 'Feb 2024 - Dec 2025',
+      description: [
+        "Engineered a microservice architecture using Django REST Framework (DRF) and FastAPI, integrating Redis for token caching and MySQL for persistent storage, resulting in a 35% improvement in API response times.",
+        "Built a Flask-based REST API to automate DOCX-to-JSON conversion and storage in MongoDB, reducing manual formatting effort by 95%.",
+        "Implemented role-based access control for backend update functionality and developed an automated email notification system using AWS SES that informs users when they are newly assigned to a record.",
+        "Developed and deployed a webhook service to enable real-time DOCX downloads from an S3 bucket using pre-signed URLs, ensuring seamless document retrieval and reducing download latency.",
+        "Designed and implemented asynchronous I/O-bound services using asyncio with FastAPI, improving the system's scalability and concurrency handling.",
+        "Wrote unit and functional tests using pytest, significantly improving code reliability and reducing production bugs.",
+        "Optimized SQL queries and contributed to database schema design and performance tuning, enhancing data retrieval speeds and overall system efficiency.",
+        "Utilized Pandas and NumPy for data preprocessing to feed structured datasets into a recommendation system, improving its accuracy and performance.",
+      ]
+    },
   }
 
   const handleCompanyChange = (company) => {

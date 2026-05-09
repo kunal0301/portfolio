@@ -1,5 +1,5 @@
 import React from 'react'
-import myPhoto from '../assets/myPhoto.jpg';
+import myPhoto from '../assets/myPhoto.jpeg';
 
 function About() {
   return (
@@ -14,8 +14,8 @@ function About() {
 
             <div className="text-gray-300 space-y-6">
               <p className="text-lg">
-                I am currently working as a <span className="text-white font-semibold">Software Developer</span> at{' '}
-                <span className="text-[#00E5B4] font-semibold">DTskill</span>, working with different AWS services like SES, S3, Lambda (Serveless) and RDS.
+                I am currently working as a <span className="text-white font-semibold">Software Engineer</span> at{' '}
+                <span className="text-[#00E5B4] font-semibold">Nuvepro Technologies</span>, where I focus on LangChain, RAG pipelines, and AI agent workflows.
                 I hold a B.Tech in <span className="text-white font-semibold">Computer Science and Engineering.</span>
               </p>
 
@@ -25,38 +25,26 @@ function About() {
 
               <div className="grid grid-cols-2 gap-4">
                 <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <span className="text-[#00E5B4] mr-2">▸</span>
-                    <span>Python</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#00E5B4] mr-2">▸</span>
-                    <span>Django</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#00E5B4] mr-2">▸</span>
-                    <span>Javascript ES6+</span>
-                  </li>
+                  {['Python', 'Django', 'FastAPI', 'JavaScript ES6+', 'Docker'].map((tech) => (
+                    <li key={tech} className="flex items-start">
+                      <span className="text-[#00E5B4] mr-2">▸</span>
+                      <span>{tech}</span>
+                    </li>
+                  ))}
                 </ul>
                 <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <span className="text-[#00E5B4] mr-2">▸</span>
-                    <span>FastAPI</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#00E5B4] mr-2">▸</span>
-                    <span>Redis</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#00E5B4] mr-2">▸</span>
-                    <span>SQL</span>
-                  </li>
+                  {['Redis', 'PostgreSQL / MySQL', 'AWS (S3, SES, Lambda)', 'RAG / LangChain', 'AI Agents / LLMs'].map((tech) => (
+                    <li key={tech} className="flex items-start">
+                      <span className="text-[#00E5B4] mr-2">▸</span>
+                      <span>{tech}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
               <p className="text-lg">
-                Outside of work, I enjoy keeping up with emerging trends in tech.
-                I’m also an sports enthusiast and love playing badminton and cricket.
+                Outside of work, I enjoy keeping up with the latest trends in AI and backend engineering.
+                I'm also a sports enthusiast and like playing <span className="text-white font-semibold">badminton</span> and <span className="text-white font-semibold">cricket</span>.
               </p>
             </div>
           </div>
