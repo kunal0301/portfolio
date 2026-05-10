@@ -44,7 +44,7 @@ function About() {
 
               <p className="text-lg">
                 Outside of work, I enjoy keeping up with the latest trends in AI and backend engineering.
-                I'm also a sports enthusiast and like playing <span className="text-white font-semibold">badminton</span> and <span className="text-white font-semibold">cricket</span>.
+                I'm also a sports enthusiast and like playing <span className="text-white font-semibold">Badminton</span> and <span className="text-white font-semibold">Cricket</span>.
               </p>
             </div>
           </div>

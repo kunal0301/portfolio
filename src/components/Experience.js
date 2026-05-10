@@ -16,9 +16,9 @@ function Experience() {
         "Collaborated with content and engineering teams to ensure assessments aligned with industry-grade backend and AI system design practices.",
       ]
     },
-    DTSkill: {
+    'DTskill AI': {
       title: 'Python Developer',
-      company: 'DTSkill',
+      company: 'DTskill AI',
       period: 'Feb 2024 - Dec 2025',
       description: [
         "Engineered a microservice architecture using Django REST Framework (DRF) and FastAPI, integrating Redis for token caching and MySQL for persistent storage, resulting in a 35% improvement in API response times.",
